@@ -1,10 +1,15 @@
-HELP.md
+# Maven and Target Directory
 target/
 !.mvn/wrapper/maven-wrapper.jar
 !**/src/main/**/target/
 !**/src/test/**/target/
 
-### STS ###
+# JAR files
+*.jar
+*.war
+*.ear
+
+# STS
 .apt_generated
 .classpath
 .factorypath
@@ -13,13 +18,14 @@ target/
 .springBeans
 .sts4-cache
 
-### IntelliJ IDEA ###
+# IntelliJ IDEA
 .idea
 *.iws
 *.iml
 *.ipr
+out/
 
-### NetBeans ###
+# NetBeans
 /nbproject/private/
 /nbbuild/
 /dist/
@@ -29,5 +35,47 @@ build/
 !**/src/main/**/build/
 !**/src/test/**/build/
 
-### VS Code ###
+# VS Code
 .vscode/
+
+# Eclipse
+.project
+.classpath
+.c9/
+.settings/
+
+# MacOS
+.DS_Store
+.AppleDouble
+.LSOverride
+
+# Windows
+Thumbs.db
+ehthumbs.db
+Desktop.ini
+
+# Node
+node_modules/
+
+# Logs
+logs/
+*.log
+
+# Temporary files
+tmp/
+*.tmp
+*.swp
+*.swo
+
+# Generated files
+*.class
+*.exe
+*.dll
+*.so
+*.dylib
+
+# IDE files
+*.sublime-project
+*.sublime-workspace
+.idea/
+*.code-workspace
