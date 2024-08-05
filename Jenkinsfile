@@ -4,6 +4,7 @@ pipeline {
         ECR_REGISTRY = 'public.ecr.aws/t7e9v6m0'
         ECR_REPOSITORY = 'spring-boot-practice-buildanddeploylambda'
         AWS_REGION = 'us-east-1'
+        APP_RUNNER_REGION = 'eu-west-2'
         AWS_CREDENTIALS_ID = 'jenkins-ecr-apprunner-credentials'
         APP_RUNNER_SERVICE_NAME = 'spring-boot-practice-cicd'
     }
@@ -39,10 +40,10 @@ pipeline {
         }
         stage('Update App Runner') {
             steps {
-                withAWS(credentials: AWS_CREDENTIALS_ID, region: AWS_REGION) {
+                withAWS(credentials: AWS_CREDENTIALS_ID, region: APP_RUNNER_REGION) {
                     sh """
                     aws apprunner update-service --service-arn arn:aws:apprunner:eu-west-2:211125415319:service/${APP_RUNNER_SERVICE_NAME} \
-                    --source-configuration ImageRepository={ImageRepositoryType="ECR_PUBLIC",ImageIdentifier=${ECR_REGISTRY}/${ECR_REPOSITORY}:${env.BUILD_NUMBER},ImageConfiguration={Port=8080}}
+                    --source-configuration ImageRepository={ImageRepositoryType=ECR_PUBLIC,ImageIdentifier=${ECR_REGISTRY}/${ECR_REPOSITORY}:${env.BUILD_NUMBER},ImageConfiguration={Port=8080}}
                     """
                 }
             }
