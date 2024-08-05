@@ -51,15 +51,5 @@ pipeline {
         always {
             cleanWs()
         }
-        failure {
-            mail to: 'alexanderwalls92@gmail.com',
-                 subject: "Build ${currentBuild.fullDisplayName} Failed",
-                 body: "Something went wrong. Please check the Jenkins job: ${env.BUILD_URL}"
-        }
-        success {
-            mail to: 'alexanderwalls92@gmail.com',
-                 subject: "Build ${currentBuild.fullDisplayName} Succeeded",
-                 body: "The build was successful. Check the details at: ${env.BUILD_URL}"
-        }
     }
 }
